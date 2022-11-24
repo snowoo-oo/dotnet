@@ -43,14 +43,14 @@ namespace login.Controllers
         }
 
         [HttpPatch]
-        public async Task<IActionResult> Patch(int id, string role)
+        public async Task<IActionResult> Patch(int id, string group)
         {
 
             var user = await _context.Users.FirstOrDefaultAsync(x =>x.Id == id);
 
             if (user == null)
                 return BadRequest("Invalid Id");
-            user.Role = role;
+            user.Group = group;
 
             await _context.SaveChangesAsync();
 
